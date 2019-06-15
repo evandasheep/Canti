@@ -15,14 +15,14 @@ class UserController
 		if($userArray != null)
 		{
 			$this->_model = new User();
-			$this->_model->$UserID = $userArray["UserID"];
-			$this->_model->$Username = $userArray["Username"];
-			$this->_model->$PasswordHash = $userArray["PasswordHash"];
-			$this->_model->$Email = $userArray["Email"];
-			$this->_model->$CreatedOn = $userArray["CreatedOn"];
-			$this->_model->$RegisteredIP = $userArray["RegisteredIP"];
-			$this->_model->$LastLogin = $userArray["LastLogin"];
-			$this->_model->$IsAdmin = $userArray["IsAdmin"];
+			$this->_model->UserID = $userArray["UserID"];
+			$this->_model->Username = $userArray["Username"];
+			$this->_model->PasswordHash = $userArray["PasswordHash"];
+			$this->_model->Email = $userArray["Email"];
+			$this->_model->CreatedOn = $userArray["CreatedOn"];
+			$this->_model->RegisteredIP = $userArray["RegisteredIP"];
+			$this->_model->LastLogin = $userArray["LastLogin"];
+			$this->_model->IsAdmin = $userArray["IsAdmin"];
 		}
 		else
 		{
@@ -31,7 +31,17 @@ class UserController
 		$this->_updateFlag = false;
 	}
 	
-	// get
+	public function toArray()
+	{
+		return array(
+			"UserID" => $this->_model->UserID,
+			"Username" => $this->_model->Username,
+			"PasswordHash" => "",
+			"Email" => $this->_model->Email,
+			"CreatedOn" => $this->_model->CreatedOn,
+			"Registeredd
+		);
+	}
 	
 	// set
 }
