@@ -1,0 +1,9 @@
+<html>
+	<head>
+		<title>Canti Installer</title>
+	</head>
+	<body>
+		<h1>Ope! Configuration error!</h1>
+		<p>Looks like ye haven't yet configured yer database settings over in inc/settings.ini properly.</p>
+	</body>
+</html>
