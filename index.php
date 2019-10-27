@@ -6,7 +6,7 @@ session_start();
 
 $siteSettings = $diagnosis->get_settings();
 $sessionId = $siteSettings['sess']['sessionId'];
-$sessionTimeout = $siteSEttings['sess']['timeout'];
+$sessionTimeout = $siteSettings['sess']['timeout'];
 
 if (isset($_SESSION['lastActivity']) && ($_SERVER['REQUEST_TIME'] - $_SESSION['lastActivity']) > $sessionTimeout)
 {
