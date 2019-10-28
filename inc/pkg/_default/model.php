@@ -4,6 +4,11 @@ class Model
 {
     protected $dbc;
     
+	public function __construct($dbc)
+	{
+		$this->dbc = $dbc;
+	}
+	
     public function getAll($table)
     {
         try
