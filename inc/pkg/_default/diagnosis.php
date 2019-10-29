@@ -14,7 +14,7 @@ class Diagnosis
 	
 	public function start()
 	{
-		$this->settings = parse_ini_file('./inc/settings.ini');
+		$this->settings = parse_ini_file('./inc/settings.ini', true);
 		$this->testResults[1] = !empty($this->settings);
 		
 		$dsn = 'mysql:dbname=' . $this->settings['db']['name'] . ';host=' . $this->settings['db']['host'];

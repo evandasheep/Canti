@@ -32,7 +32,7 @@ class UserModel extends Model
 		}
 		else
 		{
-			$result = $this->getById('site_sessions', $sessionData[1])
+			$result = $this->getById('site_sessions', $sessionData[1]);
 			if(!$result)
 			{
 				return false;
