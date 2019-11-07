@@ -12,7 +12,7 @@ class Site extends DataObject
 	{
 		// Defaults
 		$this->siteStatus = true;
-		$this->siteUrl = 'http://'.$_SERVER['SERVER_NAME'];
+		$this->siteUrl = 'http://'.$_SERVER['SERVER_NAME'] . INSTALL_PATH;
 		$this->siteName = 'Canti Framework';
 		$this->siteTagline = "Let's start a fire";
 		$this->allowUserRegister = false;

@@ -6,9 +6,11 @@ class Route
 	private $pathController;
 	private $pathParams;
 	private $requestUrl;
+	private $dbc;
 	
 	public function __construct($dbc)
 	{
+		$this->dbc = $dbc;
 		if (isset($_SERVER["REQUEST_URI"]))
 		{
 			$this->requestUrl =  strtolower(trim($_SERVER["REQUEST_URI"]));
@@ -18,14 +20,20 @@ class Route
 		$this->pathAction = 'default';
 		
 		$this->requestUrl = strtok($this->requestUrl, '?');
+		if (substr($this->requestUrl, 0, strlen(INSTALL_PATH)) == INSTALL_PATH)
+		{
+            $this->requestUrl = substr($this->requestUrl, strlen(INSTALL_PATH));
+        } 
 		
-		$this->parseRequest($dbc);
+		$this->parseRequest($this->dbc);
 	}
 	
 	public function load()
 	{
 		$con = $this->pathController;
-		call_user_func_array([new $con($this->dbc), 'interceptRequest'], array($this->pathAction, $this->pathParams));
+		$trol = new $con($this->dbc);
+		call_user_func_array([$trol, 'interceptRequest'], array($this->pathAction, $this->pathParams));
+		
 	}
 	
 	private function parseRequest($dbc)
@@ -36,11 +44,16 @@ class Route
 		
 		// Account for extra slashes
 		$fixedRequest = [];
-		if(is_array($parsedRequest)){
-			foreach($parsedRequest as $index=>$parsed){
-				if($parsed=='' || $parsed == null){
+		if (is_array($parsedRequest))
+		{
+			foreach ($parsedRequest as $index=>$parsed)
+			{
+				if ($parsed=='' || $parsed == null)
+				{
 					unset($parsedRequest[$index]);
-				}else{
+				}
+				else
+				{
 					array_push($fixedRequest,$parsed);
 				}
 			}
@@ -61,7 +74,7 @@ class Route
 							// Non-default action exists in controller
 							$this->pathAction = $parsedRequest[1];
 							
-							$refAction = new \ReflectionMethod($parsedRequest[0],$parsedRequst[1]);
+							$refAction = new \ReflectionMethod($parsedRequest[0],$parsedRequest[1]);
 							if ($refAction->getNumberOfParameters() == (count($parsedRequest)-2))
 							{
 								// Number of paramaters match, drop controller and action from paramters

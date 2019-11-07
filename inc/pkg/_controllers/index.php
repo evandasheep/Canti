@@ -7,7 +7,7 @@ class Index extends Controller
 		parent::__construct($dbc);
 	}
 	
-	public function default()
+	protected function default()
 	{
 		$this->pageTitle = "Home";
 		include 'web/index.view';

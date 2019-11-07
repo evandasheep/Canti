@@ -12,6 +12,7 @@ class Controller
     
 	public function __construct($dbc)
 	{
+	    $this->dbc = $dbc;
 		$this->siteModel = new SiteModel($dbc);
 		$this->site = $this->siteModel->get_siteObject();
 		

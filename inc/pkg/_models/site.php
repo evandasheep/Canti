@@ -2,6 +2,11 @@
 
 class SiteModel extends Model
 {
+    public function __construct($dbc)
+    {
+        $this->dbc = $dbc;
+    }
+    
 	public function get_siteObject()
 	{
 		$site = new Site();

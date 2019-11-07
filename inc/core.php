@@ -5,6 +5,11 @@ foreach(glob("./inc/pkg/_default/*.php") as $default)
 	require_once $default;
 }
 
+foreach(glob("./inc/pkg/_controllers/*.php") as $default)
+{
+	require_once $default;
+}
+
 foreach(glob("./inc/pkg/_models/*.php") as $default)
 {
 	require_once $default;

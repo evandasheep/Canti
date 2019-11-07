@@ -27,6 +27,8 @@ class Diagnosis
 		{
 			$this->testResults[2] = false;
 		}
+		
+		define('INSTALL_PATH', $this->settings['core']['path']);
 	}
 	
 	public function running()
