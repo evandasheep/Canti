@@ -46,8 +46,43 @@ class SiteModel extends Model
 		return $conf !== false;
 	}
 	
-	public function set_isInstalled($site, $user)
+	public function set_confOption($name, $value)
 	{
-		// TODO: Create required DB tables and insert provided config and admin user
+	    try
+	    {
+    	    $sql = 'UPDATE site_config SET conf_value = :value WHERE conf_name = :name';
+    	    $stmt = $this->dbc->prepare($sql);
+    	    $stmt->bindValue(':value', $value);
+    	    $stmt->bindValue(':name', $name);
+    	    $stmt->execute();
+	    }
+	    catch (Exception $e)
+	    {
+	        return false;
+	    }
+	    return true;
+	}
+	
+	public function set_isInstalled($site)
+	{
+		$retval = true;
+		foreach (glob('./inc/ins/sql/*.sql') as $sql)
+		{
+		    try
+		    {
+		        $stmt = $this->dbc->prepare($sql);
+		        $stmt->execute();
+		    }
+		    catch (Exception $e)
+		    {
+		        $retval = false;
+		        echo "Error in " . $sql;
+		    }
+		}
+		$this->set_confOption('site_status', $site->get_siteStatus());
+		$this->set_confOption('site_url', $site->get_siteUrl());
+		$this->set_confOption('site_name', true);
+		
+		return $retval;
 	}
 }

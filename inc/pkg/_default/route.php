@@ -18,6 +18,7 @@ class Route
 		
 		$this->pathController = 'index';
 		$this->pathAction = 'default';
+		$this->pathParams = array();
 		
 		$this->requestUrl = strtok($this->requestUrl, '?');
 		if (substr($this->requestUrl, 0, strlen(INSTALL_PATH)) == INSTALL_PATH)
@@ -81,7 +82,7 @@ class Route
 								unset($parsedRequest[0]);
 								unset($parsedRequest[1]);
 								
-								$this->pathParams = $parsedRequest ? array_values($parsedRequest) : [];
+								$this->pathParams = $parsedRequest ? array_values($parsedRequest) : array();
 								unset($parsedRequest);
 							}
 							else

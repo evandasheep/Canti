@@ -31,16 +31,32 @@
       </div>
 
       <div class="register-box-body">
-        <p class="login-box-msg">Welcome to your new instance of <?php echo $this->site->get_siteName(); ?>. We need to setup a few things before you can use your site.</p>
+        <p class="login-box-msg">Next we need to create the admin account. This account will have access to all backend functions of the site.</p>
+        <form action="<?php echo $this->site->get_siteUrl(); ?>/install/set/site" method="post">
+		  <div class="form-group has-feedback">
+			<label for="userName">Username</label>
+            <input id="userName" name="userName" type="text" class="form-control" placeholder="Admin" value="<?php if(isset($_POST['userName'])) echo $_POST['userName']; ?>">
+          </div>
+		  <div class="form-group has-feedback">
+			<label for="userPass">Password</label>
+            <input id="userPass" name="userPass" type="password" class="form-control">
+          </div>
+		  <div class="form-group has-feedback">
+			<label for="userPass2">Re-type Password</label>
+            <input id="userPass2" name="userPass2" type="password" class="form-control">
+          </div>
+          <div class="form-group has-feedback">
+			<label for="userEmail">Email</label>
+            <input id="userEmail" name="userEmail" type="text" class="form-control" placeholder="admin@example.com" value="<?php if(isset($_POST['userEmail'])) echo $_POST['userEmail']; ?>">
+          </div>
           <div class="row">
 			<div class="col-xs-6">
 			</div>
             <div class="col-xs-6">
-			  <a href="<?php echo $this->site->get_siteUrl(); ?>/install/site">
-                <button type="submit" class="btn btn-primary btn-block btn-flat">Begin >></button>
-			  </a>
+              <button type="submit" class="btn btn-primary btn-block btn-flat">Next >></button>
             </div><!-- /.col -->
           </div>
+        </form>
       </div><!-- /.form-box -->
     </div><!-- /.register-box -->
 

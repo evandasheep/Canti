@@ -109,4 +109,27 @@ class UserModel extends Model
 			echo "Error inserting new session.";
 		}
 	}
+	
+	public function register($user)
+	{
+		$sql = "INSERT INTO users (`username`, `password`, `email`, `is_admin`, `title`) VALUES (:username, :password, :email, :admin, :title)";
+		try
+		{
+			$stmt = $this->dbc->prepare($sql);
+			$stmt->bindValue(':username', $user->get_userName());
+			$stmt->bindValue(':password', $user->get_userPassword());
+			$stmt->bindValue(':email', $user->get_userEmail());
+			$stmt->bindValue(':admin', $user->get_isAdmin());
+			$stmt->bindValue(':title', $user->get_userTitle());
+			$stmt->execute();
+			if($stmt->rowCount() == 1)
+			{
+				return true;
+			}
+		}
+		catch (Exception $e)
+		{
+			return false;
+		}
+	}
 }
