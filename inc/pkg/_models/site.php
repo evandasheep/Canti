@@ -13,7 +13,7 @@ class SiteModel extends Model
 		
 		$queryResult = $this->getAll('site_config');
 		
-		if (count($queryResult) >= 4)
+		if (count($queryResult) >= 5)
 		{
 			$site->constructObject(
 				$queryResult[0]['conf_value'],
@@ -70,7 +70,7 @@ class SiteModel extends Model
 		{
 		    try
 		    {
-		        $stmt = $this->dbc->prepare($sql);
+		        $stmt = $this->dbc->prepare(file_get_contents($sql));
 		        $stmt->execute();
 		    }
 		    catch (Exception $e)
@@ -81,7 +81,9 @@ class SiteModel extends Model
 		}
 		$this->set_confOption('site_status', $site->get_siteStatus());
 		$this->set_confOption('site_url', $site->get_siteUrl());
-		$this->set_confOption('site_name', true);
+		$this->set_confOption('site_name', $site->get_siteName());
+		$this->set_confOption('site_tagline', $site->get_siteTagline());
+		$this->set_confOption('site_allow_register', $site->get_allowUserRegister());
 		
 		return $retval;
 	}

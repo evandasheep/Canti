@@ -8,7 +8,7 @@ class Model
     {
         try
         {
-            $sql = 'SELECT * FROM '.$table.' ORDER BY id';
+            $sql = 'SELECT * FROM '.$table;
             $stmt = $this->dbc->prepare($sql);
             $stmt->execute();
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);

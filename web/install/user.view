@@ -32,7 +32,7 @@
 
       <div class="register-box-body">
         <p class="login-box-msg">Next we need to create the admin account. This account will have access to all backend functions of the site.</p>
-        <form action="<?php echo $this->site->get_siteUrl(); ?>/install/set/site" method="post">
+        <form action="<?php echo $this->site->get_siteUrl(); ?>/install/set/user" method="post">
 		  <div class="form-group has-feedback">
 			<label for="userName">Username</label>
             <input id="userName" name="userName" type="text" class="form-control" placeholder="Admin" value="<?php if(isset($_POST['userName'])) echo $_POST['userName']; ?>">

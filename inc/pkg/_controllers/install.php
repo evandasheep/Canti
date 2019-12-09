@@ -45,13 +45,17 @@ class Install extends Controller
 					$tagline = trim($_POST['siteTagline']);
 					$allowregister = (isset($_POST['siteAllowRegister']) && $_POST['siteAllowRegister'] == 'Allow');
 					
-					$site = new Site()
+					$site = new Site();
 					$site->set_siteUrl($url);
 					$site->set_siteName($name);
-					$site->set_siteTagline($taglline);
-					$site->set_allowRegister($allowregister);
+					$site->set_siteTagline($tagline);
+					$site->set_allowUserRegister($allowregister);
 					
-					$this->siteModel->set_isInstalled($site);
+					if(!$this->siteModel->set_isInstalled($site))
+					{
+						echo "There was a problem during database installation.";
+						exit();
+					}
 					
 					header('Location: ' . $this->site->get_siteUrl(). '/install/user');
 				}
@@ -78,7 +82,7 @@ class Install extends Controller
 					{
 						$user = new User();
 						$user->set_userName($username);
-						$user->set_userPassword(password_hash($password, PASSWORD_DEFAULT);
+						$user->set_userPassword(password_hash($password, PASSWORD_DEFAULT));
 						$user->set_userEmail($email);
 						$user->set_isAdmin(true);
 						$user->set_userTitle("Administrator");
