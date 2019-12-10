@@ -1,0 +1,8 @@
+<?php require_once('./web/inc/headers/default.viewpart'); ?>
+	<section class="content-header">
+		<h1>Welcome to Canti</h1>
+	</section>
+	<!--Main content-->
+	<section class="content">
+	</section><!--/.content-->
+<?php require_once('./web/inc/footers/default.viewpart'); ?>

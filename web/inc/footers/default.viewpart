@@ -1,0 +1,20 @@
+</div><!-- /.content-wrapper -->
+<footer class="main-footer">
+        <strong>Theme Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
+      </footer>
+    </div><!-- ./wrapper -->
+
+    <!-- jQuery 2.1.4 -->
+    <script src="<?php echo $this->site->get_siteUrl(); ?>/web/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+      $.widget.bridge('uibutton', $.ui.button);
+    </script>
+    <!-- Bootstrap 3.3.5 -->
+    <script src="<?php echo $this->site->get_siteUrl(); ?>/web/js/bootstrap.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="<?php echo $this->site->get_siteUrl(); ?>/web/js/app.min.js"></script>
+  </body>
+</html>
