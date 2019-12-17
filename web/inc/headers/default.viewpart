@@ -15,7 +15,7 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="<?php echo $this->site->get_siteUrl(); ?>/web/css/AdminLTE.min.css">
 	<!-- AdminLTE Skin -->
-    <link rel="stylesheet" href="<?php echo $this->site->get_siteUrl(); ?>/web/css/skins/skin-blue.min.css">
+    <link rel="stylesheet" href="<?php echo $this->site->get_siteUrl(); ?>/web/css/skins/skin-red.min.css">
     <!-- iCheck -->
     <link rel="stylesheet" href="<?php echo $this->site->get_siteUrl(); ?>/web/plugins/iCheck/flat/blue.css">
 
@@ -26,7 +26,7 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body class="hold-transition skin-blue sidebar-mini">
+  <body class="hold-transition skin-red sidebar-mini">
     <div class="wrapper">
 
       <header class="main-header">
@@ -48,16 +48,19 @@
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-                  <span class="hidden-xs">Alexander Pierce</span>
+				  <?php if ($this->user->get_isLoggedIn()) { ?>
+                  <img src="<?php echo $this->site->get_siteUrl(); ?>/img/_theme/user.png" class="user-image" alt="User Image">
+				  <?php } ?>
+                  <span class="hidden-xs"><?php echo ($this->user->get_isLoggedIn()) ? $this->user->get_userName() : "Log In"; ?></span>
                 </a>
                 <ul class="dropdown-menu">
+				  <?php if ($this->user->get_isLoggedIn()) { ?>
                   <!-- User image -->
                   <li class="user-header">
-                    <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                    <img src="<?php echo $this->site->get_siteUrl(); ?>/img/_theme/user.png" class="img-circle" alt="User Image">
                     <p>
-                      Alexander Pierce - Web Developer
-                      <small>Member since Nov. 2012</small>
+                      <?php echo $this->user->get_userName() . " - " . $this->user->get_userTitle(); ?>
+                      <small>Member since Hell froze over</small>
                     </p>
                   </li>
                   <!-- Menu Body -->
@@ -81,7 +84,26 @@
                       <a href="#" class="btn btn-default btn-flat">Sign out</a>
                     </div>
                   </li>
-                </ul>
+                  <?php } else { ?>
+				  <li class="user-body">
+					<form role="form" method="post" action="<?php echo $this->site->get_siteUrl(); ?>/login">
+					  <div class="box-body">
+					    <div calss="form-group">
+						  <label for="userName">Username</label>
+						  <input id="userName" name="userName" class="form-control" type="text" placeholder="Username">
+					    </div>
+					    <div calss="form-group">
+						  <label for="userName">Password</label>
+						  <input id="userPass" name="userPass" class="form-control" type="password" placeholder="Password">
+					    </div>
+					  </div>
+					  <div class="box-footer">
+					  <button class="btn btn-primary" type="submit">Sign In</button>
+					  </div>
+					</form>
+				  </li>
+				  <?php } ?>
+				</ul>
               </li>
               <!-- Control Sidebar Toggle Button -->
               <li>
