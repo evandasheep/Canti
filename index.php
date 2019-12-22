@@ -11,14 +11,13 @@ require_once('./inc/core.php');
 session_start();
 
 $siteSettings = $diagnosis->get_settings();
-$sessionId = $siteSettings['sess']['sessionId'];
 $sessionTimeout = $siteSettings['sess']['timeout'];
 
 if (isset($_SESSION['lastActivity']) && ($_SERVER['REQUEST_TIME'] - $_SESSION['lastActivity']) > $sessionTimeout)
 {
 	session_unset();
 	session_destroy();
-	session_id($sessionId);
+	session_id(SESS_ID);
 	session_start();
 }
 

@@ -93,7 +93,7 @@
 						  <input id="userName" name="userName" class="form-control" type="text" placeholder="Username">
 					    </div>
 					    <div calss="form-group">
-						  <label for="userName">Password</label>
+						  <label for="userPass">Password</label>
 						  <input id="userPass" name="userPass" class="form-control" type="password" placeholder="Password">
 					    </div>
 					  </div>

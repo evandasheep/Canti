@@ -1,0 +1,23 @@
+<?php require_once('./web/inc/headers/default.viewpart'); ?>
+	<section class="content-header">
+		<h1>Login</h1>
+	</section>
+	<!--Main content-->
+	<section class="content">
+	<form role="form" method="post" action="<?php echo $this->site->get_siteUrl(); ?>/login">
+	  <div class="box-body">
+		<div calss="form-group">
+		  <label for="userName">Username</label>
+		  <input id="userName" name="userName" class="form-control" type="text" placeholder="Username">
+		</div>
+		<div calss="form-group">
+		  <label for="userPass">Password</label>
+		  <input id="userPass" name="userPass" class="form-control" type="password" placeholder="Password">
+		</div>
+	  </div>
+	  <div class="box-footer">
+	  <button class="btn btn-primary" type="submit">Sign In</button>
+	  </div>
+	</form>
+	</section><!--/.content-->
+<?php require_once('./web/inc/footers/default.viewpart'); ?>

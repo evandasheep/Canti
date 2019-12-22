@@ -58,12 +58,12 @@ class UserModel extends Model
 		if (count($result) == 1)
 		{
 			$user->constructObject(
-				$result['id'],
-				$result['username'],
-				$result['password'],
-				$result['email'],
-				$result['is_admin'],
-				$result['title']
+				$result[0]['id'],
+				$result[0]['username'],
+				$result[0]['password'],
+				$result[0]['email'],
+				$result[0]['is_admin'],
+				$result[0]['title']
 			);
 			
 			if (password_verify($userObject->get_userPassword(), $user->get_userPassword()))

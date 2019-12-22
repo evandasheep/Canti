@@ -22,7 +22,7 @@ class Controller
 		$sessionData = $this->user->get_userSession();
 		if ($this->userModel->get_sessionStatus($sessionData))
 		{
-			$this->user = $this->userModel->get_userObject($this->user->get_id());
+			$this->user = $this->userModel->get_userObject($this->user->get_userId());
 			$this->user->set_isLoggedIn(true);
 		}
 		else

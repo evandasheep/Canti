@@ -29,6 +29,7 @@ class Diagnosis
 		}
 		
 		define('INSTALL_PATH', $this->settings['core']['path']);
+		define('SESS_ID', $this->settings['sess']['sessionId']);
 	}
 	
 	public function running()
