@@ -7,6 +7,23 @@ class ArticleModel extends Model
 		$this->dbc = $dbc;
 	}
 	
+	public function get_article($id)
+	{
+		$article = new Article();
+		$result = $this->getById('articles',$id);
+		if(!result && $id != 0)
+		{
+			return false;
+			exit;
+		}
+		elseif(is_array($result) && $result != false)
+		{
+			$article->constructObject($result['id'],$result['title'],$result['content'],
+				$result['description'],$result['date'],$result['author'],$result['status']);
+		}
+		return $article;
+	}
+	
 	public function get_publishedArticles()
 	{
 		$articles = [];
