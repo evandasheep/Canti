@@ -4,5 +4,10 @@
 	</section>
 	<!--Main content-->
 	<section class="content">
+		<div class="row">
+			<div class="col-md-8">
+				<?php require_once('./web/inc/articles.viewpart'); ?>
+			</div>
+		</div>
 	</section><!--/.content-->
 <?php require_once('./web/inc/footers/default.viewpart'); ?>

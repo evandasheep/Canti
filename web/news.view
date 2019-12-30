@@ -1,0 +1,30 @@
+<?php 
+$articles = $this->articleModel->get_publishedArticles();
+require_once('./web/inc/headers/default.viewpart'); ?>
+	<section class="content-header">
+		<h1>Recent Articles</h1>
+	</section>
+	<!--Main content-->
+	<section class="content">
+		<?php
+		foreach($articles as $article)
+		{
+			$author = ($article->get_author() == false) ? new User() : $this->userModel->get_userObject($article->get_author());
+		?>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="box">
+					<div class="box-header with-border"><h3><?php echo $article->get_title(); ?></h3></div>
+					<div class="box-body"><?php echo $article->get_content(); ?></div>
+					<div class="box-footer">
+						<span class="pull-left">Published on <?php echo date("F jS, Y h:ia",strtotime($article->get_date())); ?></span>
+						<span class="pull-right">Author: <?php echo $author->get_userName(); ?></span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php
+		}
+		?>
+	</section><!--/.content-->
+<?php require_once('./web/inc/footers/default.viewpart'); ?>

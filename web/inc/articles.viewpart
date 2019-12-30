@@ -1,0 +1,16 @@
+<div class="box box-primary">
+	<div class="box-header with-border">Recent Articles</div>
+	<div class="box-body">
+		<dl>
+		<?php
+		$articleModel = new ArticleModel($this->dbc);
+		$articles = $articleModel->get_publishedArticles();
+		foreach($articles as $article)
+		{
+			echo "<dt>".$article->get_title()."</dt><dd>".$article->get_desc()."</dd>";
+		}
+		?>
+		</dl>
+	</div>
+	<div class="box-footer text-center"></div>
+</div>
