@@ -7,11 +7,25 @@ class ArticleModel extends Model
 		$this->dbc = $dbc;
 	}
 	
+	public function get_all()
+	{
+		$articles = [];
+		$result = $this->getAll('articles');
+		foreach($result as $row)
+		{
+			$articleObj = new Article();
+			$articleObj->constructObject($row['id'],$row['title'],$row['content'],$row['description'],$row['date'],$row['author'],$row['status']);
+			array_push($articles, $articleObj);
+		}
+		
+		return array_reverse($articles);
+	}
+	
 	public function get_article($id)
 	{
 		$article = new Article();
 		$result = $this->getById('articles',$id);
-		if(!result && $id != 0)
+		if(!$result && $id != 0)
 		{
 			return false;
 			exit;
