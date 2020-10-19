@@ -23,7 +23,7 @@ class Login extends Controller
 				header('Location: '.$retUrl);
 			}
 		}
-		
+		$this->pageTitle = 'Login';
         include 'web/login.view';
     }
 }

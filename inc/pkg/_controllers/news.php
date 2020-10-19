@@ -55,6 +55,7 @@ class News extends Controller
 		$this->pageTitle = 'Manage Articles';
 		if($this->user->get_isLoggedIn() && $this->user->get_isAdmin())
 		{
+			$this->article = false;
 			include 'web/news/create.view';
 		}
 		else
