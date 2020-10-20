@@ -15,7 +15,17 @@
 			<div class="box-body">
 			  <div class="form-group">
 			    <label for="articleTitle">Title</label>
-				<input id="articleName" name="articleName" class="form-control" type="text" value="<?php if($this->article != false) echo $this->article->get_title(); ?>">
+				<input id="articleTitle" name="articleTitle" class="form-control" type="text" value="<?php if($this->article != false) echo $this->article->get_title(); ?>">
+			  </div>
+			  <div class="form-group">
+			    <label for="articleDesc">Tagline</label>
+				<input id="articleDesc" name="articleDesc" class="form-control" type="text" value="<?php if($this->article != false) echo $this->article->get_desc(); ?>">
+			  </div>
+			  <div class="form-group">
+			    <label for="articleContent">Content</label>
+				<textarea id="articleContent" name="articleContent" rows="20" cols="100">
+				<?php if($this->article != false) echo $this->article->get_content(); ?>
+				</textarea>
 			  </div>
 			</div>
 			<div class="box-footer">
@@ -24,5 +34,6 @@
 		</div>
       </div>
     </form>
-	</section><!--/.content-->
+	</section>
+	<!--/.content-->
 <?php require_once('./web/inc/footers/default.viewpart'); ?>

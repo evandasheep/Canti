@@ -16,5 +16,14 @@
     <script src="<?php echo $this->site->get_siteUrl(); ?>/web/js/bootstrap.min.js"></script>
     <!-- AdminLTE App -->
     <script src="<?php echo $this->site->get_siteUrl(); ?>/web/js/app.min.js"></script>
+    <!-- CK Editor -->
+    <script src="https://cdn.ckeditor.com/4.4.3/standard/ckeditor.js"></script>
+    <script>
+      $(function () {
+        // Replace the <textarea id="editor1"> with a CKEditor
+        // instance, using default configuration.
+        CKEDITOR.replace('articleContent');
+      });
+	</script>
   </body>
 </html>
