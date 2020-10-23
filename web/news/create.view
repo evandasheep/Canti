@@ -3,7 +3,7 @@
 	  <h1>Article Editor</h1>
 	</section>
 	<section class="content">
-	<form method="post" action="<?php echo ($this->article == false) ? $this->site->get_siteUrl()."/create" : $this->site->get_siteUrl().'/edit/'.$this->article-get_id(); ?>">
+	<form method="post" action="<?php echo ($this->article == false) ? $this->site->get_siteUrl()."/create" : $this->site->get_siteUrl().'/edit/'.$this->article->get_id(); ?>">
 	  <div class="row">
         <div class="col-xs-12">
 		  <div class="box box-primary">
