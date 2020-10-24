@@ -12,7 +12,7 @@
                   <div class="box-tools">
                     <div class="input-group">
                       <div class="input-group-btn">
-                        <a href="<?php echo $this->site->get_siteUrl(); ?>/news/create" class="btn btn-sm btn-default pull-right"><i class="fa fa-plus"></i> New</a>
+                        <a href="<?php echo $this->site->get_siteUrl(); ?>/news/create" class="btn btn-sm btn-info pull-right"><i class="fa fa-plus"></i> New</a>
                       </div>
                     </div>
                   </div>

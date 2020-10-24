@@ -1,39 +1,41 @@
 <?php require_once('./web/inc/headers/default.viewpart'); ?>
-	<section class="content-header">
-	  <h1>Article Editor</h1>
-	</section>
-	<section class="content">
+<section class="content-header">
+	<h1>Article Editor</h1>
+</section>
+<section class="content">
 	<form method="post" action="<?php echo ($this->article == false) ? $this->site->get_siteUrl()."/create" : $this->site->get_siteUrl().'/edit/'.$this->article->get_id(); ?>">
-	  <div class="row">
-        <div class="col-xs-12">
-		  <div class="box box-primary">
-		    <div class="box-header">
-			  <h3 class="box-title">
-			  <?php echo ($this->article == false) ? "New Article" : "Editing Article"; ?>
-			  </h3>
+		<div class="row">
+        	<div class="col-xs-12">
+		  		<div class="box box-primary">
+		    		<div class="box-header">
+			  			<h3 class="box-title"><?php echo ($this->article == false) ? "New Article" : "Editing Article"; ?></h3>
+					</div>
+					<div class="box-body">
+						<div class="form-group">
+							<label for="articleTitle">Title</label>
+							<input id="articleTitle" name="articleTitle" class="form-control" type="text" value="<?php if($this->article != false) echo $this->article->get_title(); ?>">
+						</div>
+						<div class="form-group">
+							<label for="articleDesc">Tagline</label>
+							<input id="articleDesc" name="articleDesc" class="form-control" type="text" value="<?php if($this->article != false) echo $this->article->get_desc(); ?>">
+						</div>
+						<div class="form-group">
+							<label for="articleContent">Content</label>
+							<textarea id="articleContent" name="articleContent" rows="20" cols="100">
+								<?php if($this->article != false) echo $this->article->get_content(); ?>
+							</textarea>
+						</div>
+					</div>
+					<div class="box-footer">
+						<div class="input-group">
+		            		<div class="input-group-btn">
+								<a href="<?php echo $this->site->get_siteUrl(); ?>/news/create" class="btn btn-sm btn-info pull-right"><i class="fa fa-plus"></i> New</a>
+							</div>
+						</div>
+					</div>
+		  		</div>
 			</div>
-			<div class="box-body">
-			  <div class="form-group">
-			    <label for="articleTitle">Title</label>
-				<input id="articleTitle" name="articleTitle" class="form-control" type="text" value="<?php if($this->article != false) echo $this->article->get_title(); ?>">
-			  </div>
-			  <div class="form-group">
-			    <label for="articleDesc">Tagline</label>
-				<input id="articleDesc" name="articleDesc" class="form-control" type="text" value="<?php if($this->article != false) echo $this->article->get_desc(); ?>">
-			  </div>
-			  <div class="form-group">
-			    <label for="articleContent">Content</label>
-				<textarea id="articleContent" name="articleContent" rows="20" cols="100">
-				<?php if($this->article != false) echo $this->article->get_content(); ?>
-				</textarea>
-			  </div>
-			</div>
-			<div class="box-footer">
-			</div>
-		  </div>
-		</div>
-      </div>
-    </form>
-	</section>
-	<!--/.content-->
+    	</div>
+	</form>
+</section><!--/.content-->
 <?php require_once('./web/inc/footers/default.viewpart'); ?>
